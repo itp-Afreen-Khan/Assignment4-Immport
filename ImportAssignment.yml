@@ -1,0 +1,299 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Description: This template will be used to import existing resourses
+
+Resources:
+  DemoSNSTopic: 
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: DemoSNSTopic
+ 
+  ImportingVpc:
+    Type: AWS::EC2::VPC
+    DeletionPolicy: Delete
+    Properties: 
+      CidrBlock: 10.37.32.0/20
+      EnableDnsHostnames: true
+      EnableDnsSupport: true
+      InstanceTenancy: default
+      Tags: 
+        - Key: Name
+          Value: afreen-vpc
+
+  Importingafreenmgmtpublicsubnet1b:
+    Type: AWS::EC2::Subnet
+    DeletionPolicy: Delete
+    Properties: 
+      AvailabilityZone: us-east-1b
+      AvailabilityZoneId: use1-az6
+      CidrBlock: 10.37.39.0/24
+      Tags: 
+        - Key: Name
+          Value: afreen-mgmt-publicsubnet1b
+      VpcId: vpc-05d60d03480190473
+
+  Importingafreenmgmtpublicsubnet1a:
+    Type: AWS::EC2::Subnet
+    DeletionPolicy: Delete
+    Properties: 
+      AvailabilityZone: us-east-1a
+      AvailabilityZoneId: use1-az4
+      CidrBlock: 10.37.38.0/24
+      Tags: 
+        - Key: Name
+          Value: afreen-mgmt-publicsubnet1a
+      VpcId: vpc-05d60d03480190473
+
+  Importingafreenappprivatesubnet1a:
+      Type: AWS::EC2::Subnet
+      DeletionPolicy: Delete
+      Properties: 
+        AvailabilityZone: us-east-1a
+        AvailabilityZoneId: use1-az4
+        CidrBlock: 10.37.34.0/24
+        Tags: 
+          - Key: Name
+            Value: afreen-app-privatesubnet1a
+        VpcId: vpc-05d60d03480190473
+
+  Importingafreenappprivatesubnet1b:
+      Type: AWS::EC2::Subnet
+      DeletionPolicy: Delete
+      Properties: 
+        AvailabilityZone: us-east-1b
+        AvailabilityZoneId: use1-az6
+        CidrBlock: 10.37.35.0/24
+        Tags: 
+          - Key: Name
+            Value: afreen-app-privatesubnet1b
+        VpcId: vpc-05d60d03480190473
+
+ ############################################################################
+  Importingafreenwebprivatesubnet1a:
+      Type: AWS::EC2::Subnet
+      DeletionPolicy: Delete
+      Properties: 
+        AvailabilityZone: us-east-1a
+        AvailabilityZoneId: use1-az4
+        CidrBlock: 10.37.32.0/24
+        Tags: 
+          - Key: Name
+            Value: afreen-web-privatesubnet1a
+        VpcId: vpc-05d60d03480190473
+
+  Importingafreenwebprivatesubnet1b:
+      Type: AWS::EC2::Subnet
+      DeletionPolicy: Delete
+      Properties: 
+        AvailabilityZone: us-east-1b
+        AvailabilityZoneId: use1-az6
+        CidrBlock: 10.37.33.0/24
+        Tags: 
+          - Key: Name
+            Value: afreen-web-privatesubnet1b
+        VpcId: vpc-05d60d03480190473
+
+
+######################################################
+  Importingafreendbprivatesubnet1a:
+      Type: AWS::EC2::Subnet
+      DeletionPolicy: Delete
+      Properties: 
+        AvailabilityZone: us-east-1a
+        AvailabilityZoneId: use1-az4
+        CidrBlock: 10.37.36.0/24
+        Tags: 
+          - Key: Name
+            Value: afreen-db-privatesubnet1a
+        VpcId: vpc-05d60d03480190473
+
+  Importingafreendbprivatesubnet1b:
+      Type: AWS::EC2::Subnet
+      DeletionPolicy: Delete
+      Properties: 
+        AvailabilityZone: us-east-1b
+        AvailabilityZoneId: use1-az6
+        CidrBlock: 10.37.37.0/24
+        Tags: 
+          - Key: Name
+            Value: afreen-db-privatesubnet1b
+        VpcId: vpc-05d60d03480190473
+######################################################
+  Importingafreenenterpriseprivatesubnet1c:
+      Type: AWS::EC2::Subnet
+      DeletionPolicy: Delete
+      Properties: 
+        AvailabilityZone: us-east-1c
+        AvailabilityZoneId: use1-az1
+        CidrBlock: 10.37.40.0/24
+        Tags: 
+          - Key: Name
+            Value: afreen-enterprise-privatesubnet1c
+        VpcId: vpc-05d60d03480190473
+####################################################################
+  Importingafreensapappprivatesubnet1a:
+      Type: AWS::EC2::Subnet
+      DeletionPolicy: Delete
+      Properties: 
+        AvailabilityZone: us-east-1a
+        AvailabilityZoneId: use1-az4
+        CidrBlock: 10.37.41.0/24
+        Tags: 
+          - Key: Name
+            Value: afreen-sap-app-privatesubnet1a
+        VpcId: vpc-05d60d03480190473
+
+  Importingafreensapappprivatesubnet1b:
+      Type: AWS::EC2::Subnet
+      DeletionPolicy: Delete
+      Properties: 
+        AvailabilityZone: us-east-1b
+        AvailabilityZoneId: use1-az6
+        CidrBlock: 10.37.42.0/24
+        Tags: 
+          - Key: Name
+            Value: afreen-sap-app-privatesubnet1b
+        VpcId: vpc-05d60d03480190473
+
+####################################################################################
+
+  Importingafreensapdbprivatesubnet1a:
+      Type: AWS::EC2::Subnet
+      DeletionPolicy: Delete
+      Properties: 
+        AvailabilityZone: us-east-1a
+        AvailabilityZoneId: use1-az4
+        CidrBlock: 10.37.43.0/24
+        Tags: 
+          - Key: Name
+            Value: afreen-sap-db-privatesubnet1a
+        VpcId: vpc-05d60d03480190473
+
+  Importingafreensapdbprivatesubnet1b:
+      Type: AWS::EC2::Subnet
+      DeletionPolicy: Delete
+      Properties: 
+        AvailabilityZone: us-east-1b
+        AvailabilityZoneId: use1-az6
+        CidrBlock: 10.37.44.0/24
+        Tags: 
+          - Key: Name
+            Value: afreen-sap-db-privatesubnet1b
+        VpcId: vpc-05d60d03480190473
+
+###################################################################################
+
+  ImportingvarprodprivatertnameRouteTable:
+    Type: AWS::EC2::RouteTable
+    DeletionPolicy: Delete
+    Properties: 
+      Tags: 
+        - Key: Name
+          Value: var.prod_private_rt_name
+      VpcId: vpc-05d60d03480190473
+
+  ImportingvarprodpublicrtnameRouteTable:
+    Type: AWS::EC2::RouteTable
+    DeletionPolicy: Delete
+    Properties: 
+      Tags: 
+        - Key: Name
+          Value: var.prod_public_rt_name
+      VpcId: vpc-05d60d03480190473
+
+#######################################################################################3
+
+  Importingafreenmgmtpublicsubnet1brtAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    DeletionPolicy: Delete
+    Properties:
+      SubnetId: subnet-08a2c0781efd09842
+      RouteTableId: rtb-0f4742bc186b8bdef
+        
+  Importingafreenmgmtpublicsubnet1artAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    DeletionPolicy: Delete
+    Properties:
+      SubnetId: subnet-09bfbd10172799abc
+      RouteTableId: rtb-0f4742bc186b8bdef
+##############################################################################################
+  Importingafreenwebprivatesubnet1artAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    DeletionPolicy: Delete
+    Properties:
+      SubnetId: subnet-0f891dfd4b95b2b5a
+      RouteTableId: rtb-065a7d91bcd22cecd
+  
+  Importingafreenwebprivatesubnet1brtAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    DeletionPolicy: Delete
+    Properties:
+      SubnetId: subnet-094556d530b5717ea
+      RouteTableId: rtb-065a7d91bcd22cecd
+      
+  
+##########################################################
+  Importingafreenappprivatesubnet1artAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    DeletionPolicy: Delete
+    Properties:
+      SubnetId: subnet-029c12f30843d2a18
+      RouteTableId: rtb-065a7d91bcd22cecd
+
+  Importingafreenappprivatesubnet1brtAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    DeletionPolicy: Delete
+    Properties:
+      SubnetId: subnet-0f31afb92b46ff44c
+      RouteTableId: rtb-065a7d91bcd22cecd
+
+  Importingafreendbprivatesubnet1artAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    DeletionPolicy: Delete
+    Properties:
+      SubnetId: subnet-09b3a35d62b44eafa
+      RouteTableId: rtb-065a7d91bcd22cecd
+
+  Importingafreendbprivatesubnet1brtAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    DeletionPolicy: Delete
+    Properties:
+      SubnetId: subnet-08111c415fbbf5cab
+      RouteTableId: rtb-065a7d91bcd22cecd
+
+  Importingafreendbenterprisesubnet1crtAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    DeletionPolicy: Delete
+    Properties:
+      SubnetId: subnet-055d60dba90d6515a
+      RouteTableId: rtb-065a7d91bcd22cecd
+
+  Importingafreensapappprivatesubnet1artAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    DeletionPolicy: Delete
+    Properties:
+      SubnetId: subnet-0e83e365b46a3c831
+      RouteTableId: rtb-065a7d91bcd22cecd
+
+  Importingafreensapappprivatesubnet1brtAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    DeletionPolicy: Delete
+    Properties:
+      SubnetId: subnet-074fe89630f548b5d
+      RouteTableId: rtb-065a7d91bcd22cecd
+
+  Importingafreensapdbprivatesubnet1artAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    DeletionPolicy: Delete
+    Properties:
+      SubnetId: subnet-02ce3171a0bbbf121
+      RouteTableId: rtb-065a7d91bcd22cecd
+
+  Importingafreensapdbprivatesubnet1brtAssociation:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    DeletionPolicy: Delete
+    Properties:
+      SubnetId: subnet-02a38236bf0ba6e6b
+      RouteTableId: rtb-065a7d91bcd22cecd
+
+
